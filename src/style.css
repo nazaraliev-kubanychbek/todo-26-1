@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #181824;
+}
+
+
+.wrapper{
+    width: 500px;
+    margin: 150px auto;
+}
+
+
+.wrapper-bottom{
+    box-shadow: 0px 0px 71px -19px rgba(0,0,0,0.75);
+}
+
+
+.todo-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px; 
+}
+
+.todo-item-left,
+.todo-item-right{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
