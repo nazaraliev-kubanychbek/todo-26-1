@@ -1,9 +1,13 @@
-import TodoFilter from "../TodoFilter/TodoFilter";
+import TodoItem from './../TodoItem/TodoItem';
 
-const TodoList = () => {
+const TodoList = ({todoList, setKey}) => {
     return (
         <div>
-            <TodoFilter />
+               {
+                todoList.map(item =>{
+                    return <TodoItem setKey={setKey} item={item} />
+                })
+            }
         </div>
     );
 }
