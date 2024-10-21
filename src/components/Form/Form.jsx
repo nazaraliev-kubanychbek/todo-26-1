@@ -13,7 +13,8 @@ const Form = ({data, setData}) => {
         id: data.length > 0 ? data[0].id + 1 : 1
       },
       ...data
-    ])
+    ]);
+    setText('');
   }
 
   return (
@@ -21,10 +22,12 @@ const Form = ({data, setData}) => {
       <button onClick={()=>{
         addTodo(text)
       }}>+</button>
-      <input type="text" placeholder="Create a new todo..."
+      <input type="text"
+      placeholder="Create a new todo..."
       onChange={(e)=>{
         setText(e.target.value)
       }}
+      value={text}
       />
     </div>
   );

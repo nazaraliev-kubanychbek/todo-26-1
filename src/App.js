@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [data, setData] = useState([]);
   const [todoList, setTodoList] = useState([]);
+  const [status, setStatus] = useState('all');
 
   const setKey = (key, id) =>{
 
@@ -24,8 +25,29 @@ function App() {
   }
 
   useEffect(()=>{
-    setTodoList(data.filter(item => !item.deleted))
-  },[data])
+
+    switch(status){
+      case 'all':{
+        setTodoList(data.filter(item => !item.deleted));
+        break;
+      }
+      case 'important':{
+        setTodoList(data.filter(item => !item.deleted && item.important));
+        break;
+      }
+      case 'completed':{
+        setTodoList(data.filter(item => !item.deleted && item.completed));
+        break;
+      }
+      case 'active':{
+        setTodoList(data.filter(item => !item.deleted && !item.completed));
+        break;
+      }
+      default:{
+        setTodoList(data.filter(item => item.deleted));
+      }
+    }
+  },[data, status])
   return (
     <div className="wrapper">
 
@@ -33,7 +55,7 @@ function App() {
 
       <div className="wrapper-bottom">
       <TodoList setKey={setKey} todoList={todoList} />
-      <Footer />
+      <Footer status={status} setStatus={setStatus} />
       </div>
 
     </div>
