@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Form = ({data, setData}) => {
+const Form = ({data, setData, setStatus}) => {
   const [text, setText] = useState('');
   const addTodo = (text) =>{
     setData([
@@ -15,6 +15,7 @@ const Form = ({data, setData}) => {
       ...data
     ]);
     setText('');
+    setStatus('all');
   }
 
   return (
